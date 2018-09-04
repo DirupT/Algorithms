@@ -3,8 +3,22 @@
 import sys
 
 def making_change(amount, denominations):
-  pass
+  cache = {}
+  print(amount)
+  if amount < 0:
+    return 0
+  elif amount == 0 or amount == 1:
+    return 1
+  elif amount in cache:
+    return cache[amount]
+  else:
+    for c in denominations:
+      cache[amount] = making_change(amount - c, denominations)
+    print(cache)
+    return cache[amount]
 
+
+    
 
 if __name__ == "__main__":
   # Test out your implementation from the command line
